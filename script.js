@@ -207,25 +207,14 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ===========================================================
      7. GHL IFRAME LOADER
      =========================================================== */
-  const ghlIframe = document.getElementById('ghl-contact-form');
+  const ghlIframe = document.getElementById('inline-jBuZmVJrv9oq04ue7kUS');
   const fallback = document.getElementById('form-fallback');
 
-  const GHL_SRC = ghlIframe ? ghlIframe.getAttribute('data-ghl-src') : null;
-
-  if (ghlIframe && GHL_SRC && GHL_SRC !== 'YOUR_GHL_FORM_URL_HERE') {
-    // Load the GHL iframe
-    ghlIframe.src = GHL_SRC;
-    ghlIframe.style.display = 'block';
+  if (ghlIframe) {
+    // GHL iframe is present — hide the fallback form
     if (fallback) fallback.style.display = 'none';
-
-    // Handle iframe load errors
-    ghlIframe.addEventListener('error', () => {
-      ghlIframe.style.display = 'none';
-      if (fallback) fallback.style.display = 'block';
-    });
   } else {
-    // Show fallback form
-    if (ghlIframe) ghlIframe.style.display = 'none';
+    // No GHL iframe found — show fallback form
     if (fallback) fallback.style.display = 'block';
   }
 
@@ -292,6 +281,8 @@ document.addEventListener('DOMContentLoaded', () => {
      =========================================================== */
   document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
+      // Only apply tilt after reveal animation is done
+      if (!card.classList.contains('visible')) return;
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -302,6 +293,8 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
     card.addEventListener('mouseleave', () => {
+      if (!card.classList.contains('visible')) return;
+      // Clear inline transform — let CSS hover handle the base state
       card.style.transform = '';
     });
   });

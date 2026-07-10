@@ -193,7 +193,7 @@
   <footer class="footer">
     <div class="footer-bottom">
       <div class="container">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> Quality Tree Services Buffalo. All Rights Reserved.</p>
+        <p>&copy; <span id="footer-year"></span> Quality Tree Services Buffalo. All Rights Reserved.</p>
         <div class="footer-bottom-links">
           <a href="terms.html">Terms &amp; Conditions</a>
           <a href="privacy.html">Privacy Policy</a>
@@ -207,6 +207,9 @@
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 60);
     });
+    // Footer year
+    const fy = document.getElementById('footer-year');
+    if (fy) fy.textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
