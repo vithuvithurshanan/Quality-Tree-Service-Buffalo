@@ -14,12 +14,16 @@
   <meta property="og:image" content="https://qualitytreeservicesbuffalo.com/hero_bg.png" />
   <meta property="og:url" content="https://qualitytreeservicesbuffalo.com" />
   <link rel="canonical" href="https://qualitytreeservicesbuffalo.com" />
+  <!-- Preconnect only to origins we actually use -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <!-- font-display=swap for faster text render -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   </noscript>
+  <!-- Preload hero image (LCP element) -->
+  <link rel="preload" as="image" href="hero_bg.webp" type="image/webp" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>" />
 </head>
@@ -52,9 +56,19 @@
   </nav>
 
   <!-- =========== HERO SECTION (PARALLAX) =========== -->
+  <main id="main-content">
   <section id="home" class="hero">
     <div class="hero-parallax" id="hero-parallax">
-      <img src="hero_bg.png" alt="Beautiful trees in Buffalo NY" class="hero-img" id="hero-bg-img" />
+      <picture>
+        <source
+          type="image/webp"
+          srcset="hero_bg-400.webp 400w, hero_bg-800.webp 800w, hero_bg.webp 1024w"
+          sizes="100vw" />
+        <img src="hero_bg.png" alt="Beautiful trees in Buffalo NY"
+             class="hero-img" id="hero-bg-img"
+             width="1024" height="539"
+             fetchpriority="high" decoding="async" />
+      </picture>
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-particles" id="hero-particles"></div>
@@ -110,7 +124,10 @@
 
         <div class="service-card" id="service-trimming">
           <div class="service-img-wrap">
-            <img src="tree_trimming.png" alt="Tree Trimming Service" class="service-img" loading="lazy" />
+            <picture>
+              <source type="image/webp" srcset="tree_trimming-400.webp 400w, tree_trimming-800.webp 800w, tree_trimming.webp 1024w" sizes="(max-width:768px) 100vw, 33vw" />
+              <img src="tree_trimming.png" alt="Tree Trimming Service" class="service-img" loading="lazy" width="1024" height="539" />
+            </picture>
             <div class="service-img-overlay"></div>
             <div class="service-tag-badge">Most Popular</div>
           </div>
@@ -124,7 +141,10 @@
 
         <div class="service-card" id="service-removal">
           <div class="service-img-wrap">
-            <img src="tree_removal.png" alt="Tree Removal Service" class="service-img" loading="lazy" />
+            <picture>
+              <source type="image/webp" srcset="tree_removal-400.webp 400w, tree_removal-800.webp 800w, tree_removal.webp 1024w" sizes="(max-width:768px) 100vw, 33vw" />
+              <img src="tree_removal.png" alt="Tree Removal Service" class="service-img" loading="lazy" width="1024" height="539" />
+            </picture>
             <div class="service-img-overlay"></div>
           </div>
           <div class="service-body">
@@ -137,7 +157,10 @@
 
         <div class="service-card" id="service-stump">
           <div class="service-img-wrap">
-            <img src="stump_grinding.png" alt="Stump Grinding Service" class="service-img" loading="lazy" />
+            <picture>
+              <source type="image/webp" srcset="stump_grinding-400.webp 400w, stump_grinding-800.webp 800w, stump_grinding.webp 1024w" sizes="(max-width:768px) 100vw, 33vw" />
+              <img src="stump_grinding.png" alt="Stump Grinding Service" class="service-img" loading="lazy" width="1024" height="539" />
+            </picture>
             <div class="service-img-overlay"></div>
           </div>
           <div class="service-body">
@@ -150,7 +173,10 @@
 
         <div class="service-card" id="service-emergency">
           <div class="service-img-wrap">
-            <img src="emergency_tree.png" alt="Emergency Tree Service" class="service-img" loading="lazy" />
+            <picture>
+              <source type="image/webp" srcset="emergency_tree-400.webp 400w, emergency_tree-800.webp 800w, emergency_tree.webp 1024w" sizes="(max-width:768px) 100vw, 33vw" />
+              <img src="emergency_tree.png" alt="Emergency Tree Service" class="service-img" loading="lazy" width="1024" height="539" />
+            </picture>
             <div class="service-img-overlay"></div>
             <div class="service-tag-badge badge-red">24/7</div>
           </div>
@@ -168,7 +194,7 @@
 
   <!-- =========== PARALLAX BANNER 1 =========== -->
   <div class="parallax-banner" id="parallax-banner-1">
-    <div class="parallax-inner" id="parallax-inner-1" style="background-image: url('hero_bg.png')"></div>
+    <div class="parallax-inner" id="parallax-inner-1" style="background-image: url('hero_bg.webp')"></div>
     <div class="parallax-banner-content">
       <h2>Serving Buffalo & Western NY <span>Since Day One</span></h2>
       <p>Licensed • Insured • Local Experts</p>
@@ -182,7 +208,10 @@
       <div class="about-grid">
         <div class="about-img-col">
           <div class="about-img-frame">
-            <img src="about_team.png" alt="Quality Tree Services Buffalo Team" class="about-img" loading="lazy" />
+            <picture>
+              <source type="image/webp" srcset="about_team-400.webp 400w, about_team-800.webp 800w, about_team.webp 1024w" sizes="(max-width:900px) 100vw, 50vw" />
+              <img src="about_team.png" alt="Quality Tree Services Buffalo Team" class="about-img" loading="lazy" width="1024" height="539" />
+            </picture>
             <div class="about-img-badge">
               <span class="badge-num">15+</span>
               <span class="badge-text">Years of Excellence</span>
@@ -232,7 +261,7 @@
 
   <!-- =========== PARALLAX BANNER 2 =========== -->
   <div class="parallax-banner parallax-banner-dark" id="parallax-banner-2">
-    <div class="parallax-inner" id="parallax-inner-2" style="background-image: url('tree_removal.png')"></div>
+    <div class="parallax-inner" id="parallax-inner-2" style="background-image: url('tree_removal.webp')"></div>
     <div class="parallax-banner-content">
       <div class="quote-mark">"</div>
       <h2>Your Property's Safety<br/><span>Is Our Priority</span></h2>
@@ -287,40 +316,46 @@
       </div>
       <div class="gallery-grid">
         <div class="gallery-item gallery-large" id="gallery-item-1">
-          <img src="hero_bg.png" alt="Tree service project Buffalo NY" loading="lazy" />
-          <div class="gallery-overlay">
-            <span>Tree Care Excellence</span>
-          </div>
+          <picture>
+            <source type="image/webp" srcset="hero_bg-400.webp 400w, hero_bg-800.webp 800w, hero_bg.webp 1024w" sizes="(max-width:768px) 100vw, 33vw" />
+            <img src="hero_bg.png" alt="Tree service project Buffalo NY" loading="lazy" width="1024" height="539" />
+          </picture>
+          <div class="gallery-overlay"><span>Tree Care Excellence</span></div>
         </div>
         <div class="gallery-item" id="gallery-item-2">
-          <img src="tree_trimming.png" alt="Tree trimming project" loading="lazy" />
-          <div class="gallery-overlay">
-            <span>Precision Trimming</span>
-          </div>
+          <picture>
+            <source type="image/webp" srcset="tree_trimming-400.webp 400w, tree_trimming-800.webp 800w, tree_trimming.webp 1024w" sizes="(max-width:768px) 50vw, 22vw" />
+            <img src="tree_trimming.png" alt="Tree trimming project" loading="lazy" width="1024" height="539" />
+          </picture>
+          <div class="gallery-overlay"><span>Precision Trimming</span></div>
         </div>
         <div class="gallery-item" id="gallery-item-3">
-          <img src="tree_removal.png" alt="Tree removal project" loading="lazy" />
-          <div class="gallery-overlay">
-            <span>Safe Removal</span>
-          </div>
+          <picture>
+            <source type="image/webp" srcset="tree_removal-400.webp 400w, tree_removal-800.webp 800w, tree_removal.webp 1024w" sizes="(max-width:768px) 50vw, 22vw" />
+            <img src="tree_removal.png" alt="Tree removal project" loading="lazy" width="1024" height="539" />
+          </picture>
+          <div class="gallery-overlay"><span>Safe Removal</span></div>
         </div>
         <div class="gallery-item" id="gallery-item-4">
-          <img src="stump_grinding.png" alt="Stump grinding project" loading="lazy" />
-          <div class="gallery-overlay">
-            <span>Stump Grinding</span>
-          </div>
+          <picture>
+            <source type="image/webp" srcset="stump_grinding-400.webp 400w, stump_grinding-800.webp 800w, stump_grinding.webp 1024w" sizes="(max-width:768px) 50vw, 22vw" />
+            <img src="stump_grinding.png" alt="Stump grinding project" loading="lazy" width="1024" height="539" />
+          </picture>
+          <div class="gallery-overlay"><span>Stump Grinding</span></div>
         </div>
         <div class="gallery-item" id="gallery-item-5">
-          <img src="emergency_tree.png" alt="Emergency tree service" loading="lazy" />
-          <div class="gallery-overlay">
-            <span>Emergency Response</span>
-          </div>
+          <picture>
+            <source type="image/webp" srcset="emergency_tree-400.webp 400w, emergency_tree-800.webp 800w, emergency_tree.webp 1024w" sizes="(max-width:768px) 50vw, 22vw" />
+            <img src="emergency_tree.png" alt="Emergency tree service" loading="lazy" width="1024" height="539" />
+          </picture>
+          <div class="gallery-overlay"><span>Emergency Response</span></div>
         </div>
         <div class="gallery-item" id="gallery-item-6">
-          <img src="about_team.png" alt="Our professional team" loading="lazy" />
-          <div class="gallery-overlay">
-            <span>Our Expert Team</span>
-          </div>
+          <picture>
+            <source type="image/webp" srcset="about_team-400.webp 400w, about_team-800.webp 800w, about_team.webp 1024w" sizes="(max-width:768px) 50vw, 22vw" />
+            <img src="about_team.png" alt="Our professional team" loading="lazy" width="1024" height="539" />
+          </picture>
+          <div class="gallery-overlay"><span>Our Expert Team</span></div>
         </div>
       </div>
     </div>
@@ -341,7 +376,7 @@
           <div class="info-card" id="contact-phone-card">
             <div class="info-icon">📞</div>
             <div class="info-content">
-              <h4>Call Us Anytime</h4>
+              <p class="info-label">Call Us Anytime</p>
               <a href="tel:7162749576" id="contact-phone-link">716-274-9576</a>
               <span>Available 24/7 for emergencies</span>
             </div>
@@ -349,20 +384,20 @@
           <div class="info-card" id="contact-address-card">
             <div class="info-icon">📍</div>
             <div class="info-content">
-              <h4>Our Location</h4>
+              <p class="info-label">Our Location</p>
               <address>257 Busti Ave<br />Buffalo, NY 14201<br />United States</address>
             </div>
           </div>
           <div class="info-card" id="contact-hours-card">
             <div class="info-icon">🕐</div>
             <div class="info-content">
-              <h4>Business Hours</h4>
+              <p class="info-label">Business Hours</p>
               <span>Mon – Sat: 7:00 AM – 7:00 PM</span>
               <span>Emergency: 24/7</span>
             </div>
           </div>
           <div class="service-areas">
-            <h4>Service Areas</h4>
+            <p class="info-label">Service Areas</p>
             <div class="area-tags">
               <span>Buffalo</span><span>Amherst</span><span>Cheektowaga</span>
               <span>Tonawanda</span><span>Clarence</span><span>Orchard Park</span>
@@ -416,6 +451,8 @@
     </div>
   </section>
 
+  </main><!-- /#main-content -->
+
   <!-- =========== FOOTER =========== -->
   <footer class="footer" id="footer">
     <div class="footer-top">
@@ -437,7 +474,7 @@
             </div>
           </div>
           <div class="footer-links-col">
-            <h4>Services</h4>
+            <p class="footer-col-heading">Services</p>
             <ul>
               <li><a href="#services">Tree Trimming</a></li>
               <li><a href="#services">Tree Removal</a></li>
@@ -446,27 +483,27 @@
             </ul>
           </div>
           <div class="footer-links-col">
-            <h4>Company</h4>
+            <p class="footer-col-heading">Company</p>
             <ul>
               <li><a href="#about">About Us</a></li>
               <li><a href="#gallery">Gallery</a></li>
               <li><a href="#contact">Contact</a></li>
-              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="terms.html">Terms &amp; Conditions</a></li>
               <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
           </div>
           <div class="footer-contact-col">
-            <h4>Contact</h4>
+            <p class="footer-col-heading">Contact</p>
             <div class="footer-contact-item">
-              <span>📞</span>
+              <span aria-hidden="true">📞</span>
               <a href="tel:7162749576">716-274-9576</a>
             </div>
             <div class="footer-contact-item">
-              <span>📍</span>
+              <span aria-hidden="true">📍</span>
               <address>257 Busti Ave, Buffalo, NY 14201</address>
             </div>
             <div class="footer-contact-item">
-              <span>🕐</span>
+              <span aria-hidden="true">🕐</span>
               <span>Mon–Sat: 7AM–7PM | 24/7 Emergency</span>
             </div>
           </div>
@@ -496,25 +533,28 @@
     </a>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 
-  <!-- Firebase Analytics -->
+  <!-- Firebase Analytics — deferred to avoid blocking render -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAh9xlPcecNBAQdA69f4EI36cj3gYXqXbw",
-      authDomain: "quality-tree-service-a5d1c.firebaseapp.com",
-      projectId: "quality-tree-service-a5d1c",
-      storageBucket: "quality-tree-service-a5d1c.firebasestorage.app",
-      messagingSenderId: "257306647640",
-      appId: "1:257306647640:web:5905edf574f534aca0fe2d",
-      measurementId: "G-ZEZS04GXS0"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+    // Load after page is interactive
+    window.addEventListener('load', () => {
+      import("https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js").then(({ initializeApp }) => {
+        import("https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js").then(({ getAnalytics }) => {
+          const firebaseConfig = {
+            apiKey: "AIzaSyAh9xlPcecNBAQdA69f4EI36cj3gYXqXbw",
+            authDomain: "quality-tree-service-a5d1c.firebaseapp.com",
+            projectId: "quality-tree-service-a5d1c",
+            storageBucket: "quality-tree-service-a5d1c.firebasestorage.app",
+            messagingSenderId: "257306647640",
+            appId: "1:257306647640:web:5905edf574f534aca0fe2d",
+            measurementId: "G-ZEZS04GXS0"
+          };
+          const app = initializeApp(firebaseConfig);
+          getAnalytics(app);
+        });
+      });
+    });
   </script>
 </body>
 </html>

@@ -186,8 +186,8 @@ address { font-style: normal; }
 }
 @keyframes countUp { to { opacity: 1; } }
 @keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
 }
 
 .animate-fadeup {
@@ -760,13 +760,13 @@ address { font-style: normal; }
 .info-card:hover { border-color: var(--green-mid); transform: translateX(4px); box-shadow: var(--shadow-md); }
 .info-icon { font-size: 1.8rem; flex-shrink: 0; }
 .info-content { display: flex; flex-direction: column; gap: 0.2rem; }
-.info-content h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-main); font-weight: 700; }
+.info-content h4, .info-content .info-label,
+.service-areas .info-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-main); font-weight: 700; margin: 0 0 0.2rem; }
 .info-content a { color: var(--text-primary); text-decoration: none; font-size: 1.15rem; font-weight: 600; transition: var(--transition); }
 .info-content a:hover { color: var(--green-main); }
 .info-content span, .info-content address { color: var(--text-secondary); font-size: 0.9rem; }
 
 .service-areas { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm); }
-.service-areas h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-main); font-weight: 700; margin-bottom: 0.75rem; }
 .area-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .area-tags span {
   background: var(--green-xpale);
@@ -843,14 +843,14 @@ address { font-style: normal; }
 /* =========================================================
    FOOTER
    ========================================================= */
-.footer { background: #1a2e1c; border-top: 1px solid rgba(45,122,53,0.2); }
+.footer { background: #1a2e1c; border-top: 1px solid rgba(255,255,255,0.08); }
 .footer-logo .logo-primary { color: #f0f8f1; }
-.footer-logo .logo-sub { color: var(--green-400); }
+.footer-logo .logo-sub { color: #7dd9a0; } /* bright enough on dark green — WCAG AA */
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 3rem; }
 
 .footer-brand { display: flex; flex-direction: column; gap: 1.2rem; }
 .footer-logo { display: flex; align-items: center; gap: 0.75rem; }
-.footer-tagline { color: rgba(240,248,241,0.65); font-size: 0.9rem; line-height: 1.7; }
+.footer-tagline { color: rgba(240,248,241,0.82); font-size: 0.9rem; line-height: 1.7; }
 
 .footer-social { display: flex; gap: 0.75rem; }
 .social-btn {
@@ -872,18 +872,18 @@ address { font-style: normal; }
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--green-400);
-  font-weight: 600;
+  color: #7dd9a0; /* WCAG AA on dark green bg */
+  font-weight: 700;
   margin-bottom: 1.2rem;
 }
 .footer-links-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 .footer-links-col a {
-  color: rgba(240,248,241,0.6);
+  color: rgba(240,248,241,0.82);
   text-decoration: none;
   font-size: 0.9rem;
   transition: var(--transition);
 }
-.footer-links-col a:hover { color: var(--green-400); }
+.footer-links-col a:hover { color: #7dd9a0; }
 
 .footer-contact-col { display: flex; flex-direction: column; gap: 0.75rem; }
 .footer-contact-item {
@@ -891,10 +891,10 @@ address { font-style: normal; }
   gap: 0.75rem;
   align-items: flex-start;
   font-size: 0.88rem;
-  color: rgba(240,248,241,0.6);
+  color: rgba(240,248,241,0.82);
 }
-.footer-contact-item a { color: rgba(240,248,241,0.6); text-decoration: none; transition: var(--transition); }
-.footer-contact-item a:hover { color: var(--green-400); }
+.footer-contact-item a { color: rgba(240,248,241,0.82); text-decoration: none; transition: var(--transition); }
+.footer-contact-item a:hover { color: #7dd9a0; }
 
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08);
@@ -907,10 +907,10 @@ address { font-style: normal; }
   flex-wrap: wrap;
   gap: 1rem;
 }
-.footer-bottom p { color: rgba(240,248,241,0.4); font-size: 0.85rem; }
+.footer-bottom p { color: rgba(240,248,241,0.65); font-size: 0.85rem; }
 .footer-bottom-links { display: flex; gap: 1.5rem; }
-.footer-bottom-links a { color: rgba(240,248,241,0.4); text-decoration: none; font-size: 0.85rem; transition: var(--transition); }
-.footer-bottom-links a:hover { color: var(--green-400); }
+.footer-bottom-links a { color: rgba(240,248,241,0.65); text-decoration: none; font-size: 0.85rem; transition: var(--transition); }
+.footer-bottom-links a:hover { color: #7dd9a0; }
 
 /* =========================================================
    FLOATING CTA
