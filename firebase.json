@@ -6,6 +6,14 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "source": "**",
+        "destination": "https://qualitytreeservicesbuffalo.com/:splat",
+        "type": 301,
+        "regex": "^https://www\\.qualitytreeservicesbuffalo\\.com(/.*)$"
+      }
+    ],
     "rewrites": []
   }
 }
