@@ -21,22 +21,22 @@ async function recompress() {
     // Read the entire file into memory as a buffer
     const buffer = fs.readFileSync(inputPath);
 
-    // Full-size WebP — quality 50 (down from 80)
+    // Full-size WebP — quality 35 (down from 50)
     const fullBuf = await sharp(buffer)
-      .webp({ quality: 50, effort: 6 })
+      .webp({ quality: 35, effort: 6 })
       .toBuffer();
     fs.writeFileSync(inputPath, fullBuf);
 
-    // 800w version — quality 45 (down from 78)
+    // 800w version — quality 30 (down from 45)
     await sharp(buffer)
       .resize({ width: 800, withoutEnlargement: true })
-      .webp({ quality: 45, effort: 6 })
+      .webp({ quality: 30, effort: 6 })
       .toFile(path.join(dir, `${name}-800.webp`));
 
-    // 400w version — quality 40 (down from 75)
+    // 400w version — quality 25 (down from 40)
     await sharp(buffer)
       .resize({ width: 400, withoutEnlargement: true })
-      .webp({ quality: 40, effort: 6 })
+      .webp({ quality: 25, effort: 6 })
       .toFile(path.join(dir, `${name}-400.webp`));
 
     const newSize = (fs.statSync(inputPath).size / 1024).toFixed(1);

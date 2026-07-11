@@ -10,24 +10,47 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ===========================================================
-     1. NAVBAR SCROLL EFFECT
+     1 & 3. SCROLL EFFECTS & PARALLAX (OPTIMIZED)
      =========================================================== */
   const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
+  const floatingCta = document.getElementById('floating-cta');
 
-  const onScroll = () => {
-    // Scrolled style
-    if (window.scrollY > 60) {
+  const heroBg = document.getElementById('hero-bg-img');
+  const parallaxInner1 = document.getElementById('parallax-inner-1');
+  const parallaxInner2 = document.getElementById('parallax-inner-2');
+  const parallaxBanner1 = document.getElementById('parallax-banner-1');
+  const parallaxBanner2 = document.getElementById('parallax-banner-2');
+
+  let ticking = false;
+  let banner1Offset = 0;
+  let banner2Offset = 0;
+  let sectionOffsets = [];
+
+  const calculateLayout = () => {
+    if (parallaxBanner1) banner1Offset = parallaxBanner1.getBoundingClientRect().top + window.scrollY;
+    if (parallaxBanner2) banner2Offset = parallaxBanner2.getBoundingClientRect().top + window.scrollY;
+    sectionOffsets = Array.from(sections).map(sec => ({
+      id: sec.id,
+      top: sec.getBoundingClientRect().top + window.scrollY
+    }));
+  };
+
+  const updateScrollEffects = () => {
+    const scrollY = window.scrollY;
+
+    // 1. Navbar style
+    if (scrollY > 60) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
 
-    // Active link highlighting
+    // 2. Active link highlighting
     let current = '';
-    sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 120) {
+    sectionOffsets.forEach(sec => {
+      if (scrollY >= sec.top - 120) {
         current = sec.id;
       }
     });
@@ -38,74 +61,47 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Floating CTA visibility
-    const floatingCta = document.getElementById('floating-cta');
+    // 3. Floating CTA visibility
     if (floatingCta) {
-      if (window.scrollY > 400) {
+      if (scrollY > 400) {
         floatingCta.classList.add('visible');
       } else {
         floatingCta.classList.remove('visible');
       }
     }
+
+    // 4. Parallax
+    if (heroBg) {
+      heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
+    }
+    if (parallaxInner1 && parallaxBanner1) {
+      const parallaxOffset = (scrollY - banner1Offset + window.innerHeight) * 0.25;
+      parallaxInner1.style.transform = `translateY(${parallaxOffset}px)`;
+    }
+    if (parallaxInner2 && parallaxBanner2) {
+      const parallaxOffset = (scrollY - banner2Offset + window.innerHeight) * 0.25;
+      parallaxInner2.style.transform = `translateY(${parallaxOffset}px)`;
+    }
+
+    ticking = false;
   };
+
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateScrollEffects);
+      ticking = true;
+    }
+  };
+
+  calculateLayout();
+  updateScrollEffects();
+
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', calculateLayout, { passive: true });
 
   /* ===========================================================
      2. HAMBURGER MENU
      =========================================================== */
-  const hamburger = document.getElementById('hamburger-btn');
-  const mobileNav = document.getElementById('nav-links');
-
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileNav.classList.toggle('mobile-open');
-    });
-    // Close on link click
-    mobileNav.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('mobile-open');
-      });
-    });
-  }
-
-  /* ===========================================================
-     3. PARALLAX EFFECT
-     =========================================================== */
-  const heroBg = document.getElementById('hero-bg-img');
-  const parallaxInner1 = document.getElementById('parallax-inner-1');
-  const parallaxInner2 = document.getElementById('parallax-inner-2');
-
-  const parallaxBanner1 = document.getElementById('parallax-banner-1');
-  const parallaxBanner2 = document.getElementById('parallax-banner-2');
-
-  const applyParallax = () => {
-    const scrollY = window.scrollY;
-
-    // Hero parallax
-    if (heroBg) {
-      heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
-    }
-
-    // Banner 1 parallax
-    if (parallaxInner1 && parallaxBanner1) {
-      const rect = parallaxBanner1.getBoundingClientRect();
-      const offset = rect.top + scrollY;
-      const parallaxOffset = (scrollY - offset + window.innerHeight) * 0.25;
-      parallaxInner1.style.transform = `translateY(${parallaxOffset}px)`;
-    }
-
-    // Banner 2 parallax
-    if (parallaxInner2 && parallaxBanner2) {
-      const rect = parallaxBanner2.getBoundingClientRect();
-      const offset = rect.top + scrollY;
-      const parallaxOffset = (scrollY - offset + window.innerHeight) * 0.25;
-      parallaxInner2.style.transform = `translateY(${parallaxOffset}px)`;
-    }
-  };
-  window.addEventListener('scroll', applyParallax, { passive: true });
-  applyParallax();
 
   /* ===========================================================
      4. HERO PARTICLES
