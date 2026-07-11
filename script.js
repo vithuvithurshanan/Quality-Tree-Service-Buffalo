@@ -93,8 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  calculateLayout();
-  updateScrollEffects();
+  window.addEventListener('load', () => {
+    calculateLayout();
+    updateScrollEffects();
+  }, { passive: true });
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', calculateLayout, { passive: true });
