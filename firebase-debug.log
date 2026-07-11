@@ -1,0 +1,22 @@
+[debug] [2026-07-11T15:56:39.012Z] ----------------------------------------------------------------------
+[debug] [2026-07-11T15:56:39.030Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\wwwvi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2026-07-11T15:56:39.031Z] CLI Version:   15.23.0
+[debug] [2026-07-11T15:56:39.031Z] Platform:      win32
+[debug] [2026-07-11T15:56:39.032Z] Node Version:  v24.14.1
+[debug] [2026-07-11T15:56:39.032Z] Detected Agent: antigravity
+[debug] [2026-07-11T15:56:39.032Z] Time:          Sat Jul 11 2026 11:56:39 GMT-0400 (Eastern Daylight Time)
+[debug] [2026-07-11T15:56:39.032Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-07-11T15:56:42.914Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-07-11T15:56:42.915Z] > authorizing via signed-in user (marketingkd27@gmail.com)
+[debug] [2026-07-11T15:56:42.915Z] [iam] checking project quality-tree-service-a5d1c for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-07-11T15:56:43.039Z] Checked if tokens are valid: true, expires at: 1783788552153
+[debug] [2026-07-11T15:56:43.040Z] Checked if tokens are valid: true, expires at: 1783788552153
+[debug] [2026-07-11T15:56:43.044Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/quality-tree-service-a5d1c:testIamPermissions [none]
+[debug] [2026-07-11T15:56:43.045Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/quality-tree-service-a5d1c:testIamPermissions  x-goog-user-project=quality-tree-service-a5d1c
+[debug] [2026-07-11T15:56:43.045Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/quality-tree-service-a5d1c:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-07-11T15:56:48.862Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/quality-tree-service-a5d1c:testIamPermissions 200
+[debug] [2026-07-11T15:56:48.863Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/quality-tree-service-a5d1c:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-07-11T15:56:48.864Z] Checked if tokens are valid: true, expires at: 1783788552153
+[debug] [2026-07-11T15:56:48.864Z] Checked if tokens are valid: true, expires at: 1783788552153
+[debug] [2026-07-11T15:56:48.865Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/quality-tree-service-a5d1c [none]
